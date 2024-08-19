@@ -1,7 +1,16 @@
+import { Container, useColorModeValue } from "@chakra-ui/react";
 import "./App.css";
+import { Nav } from "./components";
 
 function App() {
-  return <h1>Hello world</h1>;
+  const bg = useColorModeValue("light", "dark");
+  return (
+    <Container bg={bg}>
+      <header>
+        <Nav />
+      </header>
+    </Container>
+  );
 }
 
 export default App;
