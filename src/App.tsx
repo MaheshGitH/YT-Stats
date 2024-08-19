@@ -1,15 +1,16 @@
-import { Container, useColorModeValue } from "@chakra-ui/react";
+import { Container } from "@chakra-ui/react";
 import "./App.css";
-import { Nav } from "./components";
+import { Head } from "./components";
 
 function App() {
-  const bg = useColorModeValue("light", "dark");
   return (
-    <Container bg={bg}>
-      <header>
-        <Nav />
-      </header>
-    </Container>
+    <div className="w-screen flex justify-center">
+      <Container m={0} maxW="1280px">
+        <header>
+          <Head />
+        </header>
+      </Container>
+    </div>
   );
 }
 
