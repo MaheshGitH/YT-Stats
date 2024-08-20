@@ -1,14 +1,19 @@
 import { Container } from "@chakra-ui/react";
 import "./App.css";
-import { Head } from "./components";
+import { Head, CustomTab } from "./components";
+import { useState } from "react";
 
 function App() {
+  const [currentTab, setCurrentTab] = useState("");
+  console.log(currentTab);
+
   return (
-    <div className="w-screen flex justify-center">
-      <Container m={0} maxW="1280px">
+    <div className="w-screen">
+      <Container mx="auto" maxW="1280px">
         <header>
           <Head />
         </header>
+        <CustomTab currentTab={(value) => setCurrentTab(value)} />
       </Container>
     </div>
   );
