@@ -1,11 +1,10 @@
 import { Container } from "@chakra-ui/react";
 import "./App.css";
-import { Head, CustomTab } from "./components";
+import { Head, CustomTab, Overview } from "./components";
 import { useState } from "react";
 
 function App() {
-  const [currentTab, setCurrentTab] = useState("");
-  console.log(currentTab);
+  const [currentTab, setCurrentTab] = useState("Overview");
 
   return (
     <div className="w-screen">
@@ -14,6 +13,7 @@ function App() {
           <Head />
         </header>
         <CustomTab currentTab={(value) => setCurrentTab(value)} />
+        {currentTab === "Overview" ? <Overview /> : null}
       </Container>
     </div>
   );

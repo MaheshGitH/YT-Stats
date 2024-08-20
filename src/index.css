@@ -29,3 +29,7 @@
   font-weight: 900;
   font-style: normal;
 }
+
+pre {
+  font-family: "Roboto", sans-serif;
+}
