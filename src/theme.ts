@@ -8,7 +8,10 @@ const config: ThemeConfig = {
 const colors = {
   light: "#F5F3F4",
   dark: "#161A1D",
-  primary: "#E5383B",
+  primary: {
+    200: "#E5383B",
+    500: "#E5383B",
+  },
   secondary: "#786868",
   custBlack: "#0B090A",
 };

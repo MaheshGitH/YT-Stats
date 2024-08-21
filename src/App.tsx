@@ -1,6 +1,6 @@
 import { Container } from "@chakra-ui/react";
 import "./App.css";
-import { Head, CustomTab, Overview } from "./components";
+import { Head, CustomTab, Overview, Statistics } from "./components";
 import { useState } from "react";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           <Head />
         </header>
         <CustomTab currentTab={(value) => setCurrentTab(value)} />
-        {currentTab === "Overview" ? <Overview /> : null}
+        {currentTab === "Overview" ? <Overview /> : <Statistics />}
       </Container>
     </div>
   );

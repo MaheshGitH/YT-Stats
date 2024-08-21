@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+pre {
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("/src/assets/fonts/Roboto-Regular.woff2") format("woff2");
@@ -28,8 +36,4 @@
   src: url("/src/assets/fonts/Roboto-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
-}
-
-pre {
-  font-family: "Roboto", sans-serif;
 }

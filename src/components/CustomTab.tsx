@@ -18,7 +18,7 @@ const CustomTab = ({ currentTab }: Props) => {
           selectedTab === "Overview"
             ? " text-primary bg-[#e5383b16] "
             : " bg-transparent  "
-        } duration-300 rounded-tl-lg w-full hover:bg-[#e5383b0d] lg:w-auto py-2 px-4`}
+        } duration-300 rounded-tl-lg w-full hover:bg-[#e5383b0d] lg:w-auto py-2 px-4 font-medium`}
         onClick={handleSelectTab}
       >
         Overview
@@ -28,7 +28,7 @@ const CustomTab = ({ currentTab }: Props) => {
           selectedTab === "Statistics"
             ? " text-primary bg-[#e5383b16] "
             : " bg-transparent  "
-        } duration-300 rounded-tr-lg w-full hover:bg-[#e5383b0d] lg:w-auto py-2 px-4`}
+        } duration-300 rounded-tr-lg w-full hover:bg-[#e5383b0d] lg:w-auto py-2 px-4 font-medium`}
         onClick={handleSelectTab}
       >
         Statistics
