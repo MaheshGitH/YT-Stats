@@ -5,7 +5,7 @@ import Note from "./Note";
 const Overview = () => {
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col lg:flex-row">
         <ChannelProfile />
         <ChannelDetails />
       </div>

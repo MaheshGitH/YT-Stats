@@ -6,19 +6,19 @@ const Search = ({ colorMode }: ColorModeType) => {
   return (
     <section>
       <form
-        className={`max-w-md min-w-24 ${
+        className={`max-w-xl min-w-24 ${
           colorMode === "light"
             ? " bg-[#EFEFEF] text-black "
             : " bg-black text-white "
-        }  border-b-2 border-primary flex  items-center px-6 py-4 rounded-tl-lg rounded-tr-lg mx-auto`}
+        }  border-b-2 border-primary flex  items-center px-4 py-3 rounded-tl-lg rounded-tr-lg mx-auto`}
         action=""
       >
         <input
           placeholder="Enter YouTube channel ID"
-          className="bg-transparent placeholder-[#786868] w-full outline-none"
+          className="bg-transparent placeholder-[#786868] w-full placeholder:text-sm outline-none"
           type="text"
         />
-        <IoSearchOutline className=" text-primary size-7" />
+        <IoSearchOutline className="text-primary size-6" />
       </form>
       <Instruction />
     </section>

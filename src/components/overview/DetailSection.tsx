@@ -8,9 +8,9 @@ interface Props {
 
 const DetailSection = ({ heading, children, customClass }: Props) => {
   return (
-    <span className={"flex gap-4 " + customClass}>
+    <span className={"flex gap-4 lg:text-lg " + customClass}>
       <p className="text-secondary font-medium ">{heading}</p>
-      <pre className={customClass}>{children}</pre>
+      <pre className={customClass + " text-wrap "}>{children}</pre>
     </span>
   );
 };

@@ -30,11 +30,21 @@ const fonts = {
   body: "'Roboto', sans-serif",
 };
 
+const breakpoints = {
+  base: "0px",
+  sm: "320px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1200px",
+  "2xl": "1536px",
+};
+
 const theme = extendTheme({
   config,
   colors,
   styles,
   fonts,
+  breakpoints,
 });
 
 export default theme;

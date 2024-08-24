@@ -2,7 +2,7 @@ import { ColorModeType } from "../types";
 
 const Logo = ({ colorMode }: ColorModeType) => {
   return (
-    <svg width="171" height="50" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 171 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect
         x="1"
         y="1"
@@ -10,7 +10,7 @@ const Logo = ({ colorMode }: ColorModeType) => {
         height="48"
         rx="14"
         stroke="#E5383B"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <path
         d="M43.5 21.9019c2 1.1547 2 4.0415 0 5.1962l-17.25 9.9593c-2 1.1547-4.5-.2887-4.5-2.5981V14.5407c0-2.3094 2.5-3.7528 4.5-2.5981l17.25 9.9593ZM75.48 38.97l8.19-18.39h2.58l-8.01 18.39h-2.76Zm3.06-5.88-5.97-12.51h3.15l5.01 11.1-2.19 1.41Zm11.9142-17.97h2.79v5.52h3.42v2.19h-3.42V33h-2.79V22.83h-2.28v-2.19h2.28v-5.52Z"
