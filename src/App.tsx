@@ -13,7 +13,6 @@ import { YoutubeProvider } from "./context/YoutubeContext";
 function App() {
   const [currentTab, setCurrentTab] = useState("Overview");
   const [isDisabled, setIsDisabled] = useState(false);
-  console.log(isDisabled);
 
   return (
     <div className="w-screen">

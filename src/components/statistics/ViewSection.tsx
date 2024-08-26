@@ -14,13 +14,11 @@ interface Props {
 }
 
 const ViewSection = ({ viewCount }: Props) => {
-  if (!viewCount) return;
-
   const cProgressBreakPoint = useBreakpointValue({ base: 140, lg: 200 });
   const [max, setMax] = useState(0);
 
   useEffect(() => {
-    setMax(calculateCount(parseInt(viewCount)));
+    setMax(calculateCount(parseInt(viewCount!)));
   }, [viewCount]);
 
   return (
@@ -35,7 +33,7 @@ const ViewSection = ({ viewCount }: Props) => {
       </span>
 
       <CircularProgress
-        value={parseInt(viewCount)}
+        value={parseInt(viewCount!)}
         size={cProgressBreakPoint}
         color="primary.200"
         max={max}
@@ -44,8 +42,8 @@ const ViewSection = ({ viewCount }: Props) => {
           fontSize={["1.3rem", null, null, "1.5rem", null, null]}
           fontWeight="600"
         >
-          {`${formatNumber(parseInt(viewCount))} ${
-            parseInt(viewCount) > 1000 ? "+" : ""
+          {`${formatNumber(parseInt(viewCount!))} ${
+            parseInt(viewCount!) > 1000 ? "+" : ""
           }`}
         </CircularProgressLabel>
       </CircularProgress>

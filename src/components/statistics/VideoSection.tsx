@@ -14,13 +14,11 @@ interface Props {
 }
 
 const VideoSection = ({ videoCount }: Props) => {
-  if (!videoCount) return;
-
   const [max, setMax] = useState(0);
   const cProgressBreakPoint = useBreakpointValue({ base: 140, lg: 200 });
 
   useEffect(() => {
-    setMax(calculateCount(parseInt(videoCount)));
+    setMax(calculateCount(parseInt(videoCount!)));
   }, [videoCount]);
 
   return (
@@ -34,7 +32,7 @@ const VideoSection = ({ videoCount }: Props) => {
         </span>
       </span>
       <CircularProgress
-        value={parseInt(videoCount)}
+        value={parseInt(videoCount!)}
         size={cProgressBreakPoint}
         color="primary.200"
         max={max}
@@ -43,8 +41,8 @@ const VideoSection = ({ videoCount }: Props) => {
           fontSize={["1.3rem", null, null, "1.5rem", null, null]}
           fontWeight="600"
         >
-          {`${formatNumber(parseInt(videoCount))} ${
-            parseInt(videoCount) > 1000 ? "+" : ""
+          {`${formatNumber(parseInt(videoCount!))} ${
+            parseInt(videoCount!) > 1000 ? "+" : ""
           }`}
         </CircularProgressLabel>
       </CircularProgress>

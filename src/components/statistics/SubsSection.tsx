@@ -10,11 +10,10 @@ interface Props {
 }
 
 const SubsSection = ({ subscribersCount }: Props) => {
-  if (!subscribersCount) return;
   const [max, setMax] = useState(0);
 
   useEffect(() => {
-    setMax(calculateCount(parseInt(subscribersCount)));
+    setMax(calculateCount(parseInt(subscribersCount!)));
   }, [subscribersCount]);
   return (
     <div className="lg:col-span-2">
@@ -24,7 +23,7 @@ const SubsSection = ({ subscribersCount }: Props) => {
           Subscribers count{" "}
           <span className="font-bold">
             {" "}
-            {`${formatNumber(parseInt(subscribersCount))} ${
+            {`${formatNumber(parseInt(subscribersCount!))} ${
               parseInt(subscribersCount!) > 1000 ? "+" : ""
             }`}
           </span>
@@ -38,7 +37,7 @@ const SubsSection = ({ subscribersCount }: Props) => {
         borderColor="primary.200"
         borderRadius={200}
         colorScheme={"primary"}
-        value={parseInt(subscribersCount)}
+        value={parseInt(subscribersCount!)}
         max={max}
         position="relative"
       >
