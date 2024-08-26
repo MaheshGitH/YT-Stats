@@ -1,8 +1,24 @@
 import { IoSearchOutline } from "react-icons/io5";
-import { ColorModeType } from "../types";
+import { ColorModeType, YoutubeData } from "../types";
 import Instruction from "./Instruction";
+import { FormEvent, useState } from "react";
+import { useYoutubeContext } from "../../context/YoutubeContext";
 
 const Search = ({ colorMode }: ColorModeType) => {
+  const [channelId, setChannelId] = useState("");
+  const { setData } = useYoutubeContext();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    const response = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${
+        import.meta.env.VITE_YOUTUBE_APIKEY
+      }`
+    );
+    const data = await response.json();
+    const result: YoutubeData = data.items[0];
+    setData(result);
+  };
   return (
     <section>
       <form
@@ -11,14 +27,22 @@ const Search = ({ colorMode }: ColorModeType) => {
             ? " bg-[#EFEFEF] text-black "
             : " bg-black text-white "
         }  border-b-2 border-primary flex  items-center px-4 py-3 rounded-tl-lg rounded-tr-lg mx-auto`}
-        action=""
+        onSubmit={handleSubmit}
       >
         <input
+          name="search"
+          required
+          minLength={24}
+          maxLength={24}
+          value={channelId}
+          onChange={(e) => setChannelId(e.currentTarget.value)}
           placeholder="Enter YouTube channel ID"
           className="bg-transparent placeholder-[#786868] w-full placeholder:text-sm outline-none"
           type="text"
         />
-        <IoSearchOutline className="text-primary size-6" />
+        <button type="submit">
+          <IoSearchOutline className="text-primary size-6" />
+        </button>
       </form>
       <Instruction />
     </section>

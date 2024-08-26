@@ -13,8 +13,7 @@ const Head = () => {
           <Logo colorMode={colorMode} />
         </span>
         <button
-          className="border rounded-lg border-primary
-          "
+          className="border rounded-lg border-primary"
           onClick={toggleColorMode}
         >
           {colorMode === "light" ? (
