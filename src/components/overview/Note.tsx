@@ -1,5 +1,3 @@
-import React from "react";
-
 const Note = () => {
   return (
     <article className="flex flex-col gap-5 border-t border-primary pt-10 mb-20 lg:text-lg">
