@@ -3,18 +3,22 @@ import { ColorModeType, YoutubeData } from "../types";
 import Instruction from "./Instruction";
 import { FormEvent, useState } from "react";
 import { useYoutubeContext } from "../../context/YoutubeContext";
+import { VscLoading } from "react-icons/vsc";
 
 const Search = ({ colorMode }: ColorModeType) => {
+  const [loading, setLoading] = useState(false);
   const [channelId, setChannelId] = useState("");
   const { setData } = useYoutubeContext();
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setLoading(true);
 
     const response = await fetch(
       `https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${
         import.meta.env.VITE_YOUTUBE_APIKEY
       }`
-    );
+    ).finally(() => setLoading(false));
+
     const data = await response.json();
     const result: YoutubeData = data.items[0];
     setData(result);
@@ -41,7 +45,11 @@ const Search = ({ colorMode }: ColorModeType) => {
           type="text"
         />
         <button type="submit">
-          <IoSearchOutline className="text-primary size-6" />
+          {loading ? (
+            <VscLoading className="text-primary animate-spin size-6" />
+          ) : (
+            <IoSearchOutline className="text-primary size-6" />
+          )}
         </button>
       </form>
       <Instruction />
