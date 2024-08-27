@@ -20,7 +20,9 @@ const Search = ({ colorMode }: ColorModeType) => {
     const response = await fetch(
       `https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&${
         searchBy === "channelId" ? "id" : "forHandle"
-      }=${inputValue}&key=${import.meta.env.VITE_YOUTUBE_APIKEY}`
+      }=${inputValue.replace(/\s+/g, "")}&key=${
+        import.meta.env.VITE_YOUTUBE_APIKEY
+      }`
     ).finally(() => setLoading(false));
 
     const data = await response.json();
