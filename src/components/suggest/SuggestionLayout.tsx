@@ -24,7 +24,7 @@ const SuggestionLayout = ({ logo, alt, channelId }: Props) => {
   }, [clicked]);
 
   return (
-    <div className="border border-primary py-1 px-2 rounded-md flex gap-3">
+    <div className="border border-primary py-1 px-2 rounded-md flex gap-3 max-[395px]:flex-col">
       <img className="size-20 rounded-full" src={logo} alt={alt} />
       <div className=" flex flex-col gap-2 mt-2">
         <span className="text-lg">{alt}</span>
@@ -37,7 +37,7 @@ const SuggestionLayout = ({ logo, alt, channelId }: Props) => {
               .then(() => setClicked(true));
           }}
         >
-          <span className="text-base">{channelId}</span>
+          <span className="text-base text-wrap">{channelId}</span>
           <GoCopy className="size-5" />
           <span
             className={`absolute -right-1 ${

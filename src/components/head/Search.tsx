@@ -7,16 +7,20 @@ import { VscLoading } from "react-icons/vsc";
 
 const Search = ({ colorMode }: ColorModeType) => {
   const [loading, setLoading] = useState(false);
-  const [channelId, setChannelId] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [searchBy, setSearchBy] = useState<"channelId" | "userName">(
+    "channelId"
+  );
+
   const { setData } = useYoutubeContext();
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setLoading(true);
 
     const response = await fetch(
-      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${
-        import.meta.env.VITE_YOUTUBE_APIKEY
-      }`
+      `https://youtube.googleapis.com/youtube/v3/channels?part=snippet,statistics&${
+        searchBy === "channelId" ? "id" : "forHandle"
+      }=${inputValue}&key=${import.meta.env.VITE_YOUTUBE_APIKEY}`
     ).finally(() => setLoading(false));
 
     const data = await response.json();
@@ -25,6 +29,28 @@ const Search = ({ colorMode }: ColorModeType) => {
   };
   return (
     <section>
+      <div className="mx-auto max-w-xl min-w-24">
+        <div className="flex justify-between mb-2 gap-2">
+          <button
+            className={`w-full border py-2 rounded-lg ${
+              searchBy === "channelId" ? " border-primary" : " border "
+            } duration-300`}
+            onClick={() => setSearchBy("channelId")}
+          >
+            Search by channel ID
+          </button>
+          <button
+            className={`w-full border py-2 rounded-lg ${
+              searchBy === "userName" ? " border-primary " : " border "
+            } duration-300`}
+            onClick={() => setSearchBy("userName")}
+          >
+            {" "}
+            Search by username
+          </button>
+        </div>
+      </div>
+
       <form
         className={`max-w-xl min-w-24 ${
           colorMode === "light"
@@ -36,11 +62,15 @@ const Search = ({ colorMode }: ColorModeType) => {
         <input
           name="search"
           required
-          minLength={24}
-          maxLength={24}
-          value={channelId}
-          onChange={(e) => setChannelId(e.currentTarget.value)}
-          placeholder="Enter YouTube channel ID"
+          minLength={searchBy === "channelId" ? 24 : 0}
+          maxLength={searchBy === "channelId" ? 24 : 100}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.currentTarget.value)}
+          placeholder={
+            searchBy === "channelId"
+              ? "Enter YouTube channel ID"
+              : "Enter YouTube username"
+          }
           className="bg-transparent placeholder-[#786868] w-full placeholder:text-sm outline-none"
           type="text"
         />

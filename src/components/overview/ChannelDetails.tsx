@@ -12,7 +12,7 @@ const ChannelDetails = ({ country, customUrl, description }: Props) => {
     <div className="flex flex-col gap-4 lg:w-full lg:mt-20 duration-300">
       <DetailSection heading="Country : ">{country}</DetailSection>
       <DetailSection
-        customClass=" text-primary flex gap-1 items-center"
+        customClass=" text-primary flex-col gap-1 sm:flex-row"
         heading="Channel URL : "
       >
         <a href={`https://www.youtube.com/${customUrl}`} target="_blank">
