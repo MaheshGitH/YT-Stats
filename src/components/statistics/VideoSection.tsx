@@ -15,6 +15,7 @@ interface Props {
 
 const VideoSection = ({ videoCount }: Props) => {
   const [max, setMax] = useState(0);
+  const [showFullCount, setShowFullCount] = useState(false);
   const cProgressBreakPoint = useBreakpointValue({ base: 140, lg: 200 });
 
   useEffect(() => {
@@ -36,11 +37,21 @@ const VideoSection = ({ videoCount }: Props) => {
         size={cProgressBreakPoint}
         color="primary.200"
         max={max}
+        cursor="pointer"
+        onClick={() => setShowFullCount((count) => !count)}
       >
         <CircularProgressLabel
           fontSize={["1.3rem", null, null, "1.5rem", null, null]}
           fontWeight="600"
+          cursor="pointer"
         >
+          <span
+            className={`absolute font-normal text-white rounded-md border border-primary bg-[#161a1d] px-2 -translate-x-1/4 ${
+              showFullCount ? " opacity-100 top-10 " : " opacity-0 top-0 "
+            } duration-300`}
+          >
+            {videoCount}
+          </span>
           {`${formatNumber(parseInt(videoCount!))} ${
             parseInt(videoCount!) > 1000 ? "+" : ""
           }`}

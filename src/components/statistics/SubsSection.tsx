@@ -11,13 +11,17 @@ interface Props {
 
 const SubsSection = ({ subscribersCount }: Props) => {
   const [max, setMax] = useState(0);
+  const [showFullCount, setShowFullCount] = useState(false);
 
   useEffect(() => {
     setMax(calculateCount(parseInt(subscribersCount!)));
   }, [subscribersCount]);
   return (
-    <div className="lg:col-span-2">
-      <span className="flex items-center gap-2">
+    <div
+      className="lg:col-span-2 cursor-pointer"
+      onClick={() => setShowFullCount((count) => !count)}
+    >
+      <span className="flex items-center gap-2 relative">
         <FaPeopleGroup className="inline-block mb-px text-primary size-4 lg:size-5" />
         <span className="lg:text-lg">
           Subscribers count{" "}
@@ -27,6 +31,13 @@ const SubsSection = ({ subscribersCount }: Props) => {
               parseInt(subscribersCount!) > 1000 ? "+" : ""
             }`}
           </span>
+        </span>
+        <span
+          className={`absolute font-normal text-white text-lg rounded-md border border-primary bg-[#161a1d] px-2 left-10 ${
+            showFullCount ? " opacity-100 bottom-10 " : " opacity-0 bottom-0 "
+          } duration-300`}
+        >
+          {subscribersCount}
         </span>
       </span>
       <Progress
